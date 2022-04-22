@@ -37,7 +37,7 @@ namespace Weather.Views
         private async void Button_Clicked(object sender, EventArgs e)
         {
             myOutput.Text = "";
-            WriteLine("---Start Console program---\n");
+            WriteLine("---Start Console program---");
 
             var p = new Program(this);
             await p.myMain();

@@ -1,10 +1,89 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:Weather.Views"
              x:Class="Weather.Views.ForecastPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label>Your code to present the weather data for example in a ListView</Label>
-        </StackLayout>
-    </ContentPage.Content>
+
+
+
+    <StackLayout BackgroundColor="#37474F">
+        <Button Text="Refresh" FontAttributes="Bold" TextColor="#FFF" 
+                    Clicked="RefreshPage"/>
+
+        <ListView x:Name= "WeatherListView"
+                      IsGroupingEnabled="True"
+                      HasUnevenRows="True">
+
+            <ListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <ViewCell 
+                            Height="40">
+
+                        <StackLayout
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="40"
+                            BackgroundColor="#37474F"
+                            Padding="5"
+                            Orientation="Horizontal">
+
+                            <Label
+
+                                FontSize="20"
+                                TextColor="#FFF"
+                                VerticalOptions="Center"
+                                FontAttributes="Bold"
+                                Text="{Binding Key, StringFormat='{0:dddd, dd MMMM yyyy}'}"/>
+
+                        </StackLayout>
+
+                    </ViewCell>
+                </DataTemplate>
+
+            </ListView.GroupHeaderTemplate>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout VerticalOptions="CenterAndExpand" Margin="20" >
+                            <Frame BackgroundColor="#2197C7" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="450" HeightRequest="200" CornerRadius="10" Margin="20,10,20,10">
+                                <Grid >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Row="0" Grid.Column="0"  Text="{Binding DateTime, StringFormat='{0:h:mm tt}'}" FontSize="15" TextColor="#FFF"/>
+                                    <Label Grid.Row="1" Grid.Column="0"  Text="{Binding Temperature, StringFormat='{0:N0}°'}" FontSize="52" FontAttributes="Bold" TextColor="#FFF"/>
+                                    <Label Grid.Row="2" Grid.Column="1"  Text="{Binding WindSpeed, StringFormat='{0:N0}m/s'}" FontSize="15" TextColor="#FFF"/>
+                                    <Label Grid.Row="2" Grid.Column="0"  Text="wind" FontSize="15" TextColor="#FFF"/>
+                                    <Label Grid.Row="3" Grid.Column="0"  Text="{Binding Description}" FontSize="15" TextColor="#FFF"/>
+                                    <Image Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="4" WidthRequest="175" HeightRequest="175" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Source="{Binding Icon}" />
+                                </Grid>
+
+                            </Frame>
+
+                        </StackLayout>
+
+                    </ViewCell>
+
+                </DataTemplate>
+
+            </ListView.ItemTemplate>
+
+
+        </ListView>
+
+    </StackLayout>
+
+
+
+
 </ContentPage>

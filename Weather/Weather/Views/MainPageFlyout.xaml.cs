@@ -34,8 +34,18 @@ namespace Weather.Views
                 MenuItems = new ObservableCollection<MainPageFlyoutMenuItem>(new[]
                 {
                     new MainPageFlyoutMenuItem { Id = 0, Title = "About Weather", TargetType=typeof(AboutPage) },
-                    new MainPageFlyoutMenuItem { Id = 1, Title = "Debug Console", TargetType=typeof(ConsolePage) },
+                    new MainPageFlyoutMenuItem { Id = 2, Title = "Stockholm", TargetType=typeof(ForecastPage) },
+                    new MainPageFlyoutMenuItem { Id = 3, Title = "Oslo", TargetType=typeof(ForecastPage) },
+                    new MainPageFlyoutMenuItem { Id = 4, Title = "New York", TargetType=typeof(ForecastPage) },
+                    new MainPageFlyoutMenuItem { Id = 5, Title = "Addis Abeba", TargetType=typeof(ForecastPage) },
+                    new MainPageFlyoutMenuItem { Id = 6, Title = "Gondar", TargetType=typeof(ForecastPage) },
+                    new MainPageFlyoutMenuItem { Id = 6, Title = "Tunis", TargetType=typeof(ForecastPage) },
+                    new MainPageFlyoutMenuItem { Id = 6, Title = "Yakutsk", TargetType=typeof(ForecastPage) },
+                    new MainPageFlyoutMenuItem { Id = 6, Title = "Ulaanbaatar", TargetType=typeof(ForecastPage) },
+
+
                 });
+
             }
         }
     }

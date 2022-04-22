@@ -5,17 +5,19 @@
              x:Class="Weather.Views.ConsolePage"
              Title="Debug Console"
              Padding="10,30,10,5">
-    <StackLayout Padding="10" >
+    <StackLayout Padding="10" BackgroundColor="LightPink">
         <Label Text="Simple Console Output" HorizontalOptions="Center" FontSize="24"/>
-        <StackLayout Orientation="Horizontal" HeightRequest="50" HorizontalOptions="Center">
+        <StackLayout BackgroundColor="LightSalmon" Orientation="Horizontal" HeightRequest="50" HorizontalOptions="Center">
             <Stepper x:Name="stepper" Minimum="0" Increment="1" VerticalOptions="Center"/>
             <Label Text="{Binding Value}" BindingContext="{x:Reference stepper}" VerticalOptions="Center" />
         </StackLayout>
-        <StackLayout>
+
+        <StackLayout BackgroundColor="LightSalmon">
             <Button Text="Run your Console program" Clicked="Button_Clicked" />
             <ScrollView>
                 <Editor x:Name="myOutput" IsReadOnly="True" AutoSize="TextChanges"/>
             </ScrollView>
         </StackLayout>
+        <Image x:Name="weatherGif" Source=" weatherGif"></Image>
     </StackLayout>
 </ContentPage>

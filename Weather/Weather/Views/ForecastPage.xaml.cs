@@ -11,9 +11,11 @@ using Xamarin.Forms.Xaml;
 
 using Weather.Models;
 using Weather.Services;
+using System.Globalization;
 
 namespace Weather.Views
 {
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
 
     public partial class ForecastPage : ContentPage
@@ -24,7 +26,7 @@ namespace Weather.Views
         public ForecastPage()
         {
             InitializeComponent();
-            
+
             service = new OpenWeatherService();
             groupedforecast = new GroupedForecast();
         }
@@ -33,16 +35,31 @@ namespace Weather.Views
         {
             base.OnAppearing();
 
-            //Code here will run right before the screen appears
-            //You want to set the Title or set the City
-
-            //This is making the first load of data
-            MainThread.BeginInvokeOnMainThread(async () => {await LoadForecast();});
+            MainThread.BeginInvokeOnMainThread(async () => { await LoadForecast(); });
         }
 
         private async Task LoadForecast()
         {
-            //Heare you load the forecast 
+
+            Forecast t1 = await service.GetForecastAsync(Title);
+
+            {
+
+                t1.Items.ForEach(x => x.Icon = $"http://openweathermap.org/img/wn/{x.Icon}@2x.png");
+
+
+                WeatherListView.ItemsSource = t1.Items.GroupBy(x => x.DateTime.Date);
+
+            };
+
         }
+
+        private async void RefreshPage(object sender, EventArgs args)
+        {
+
+            await LoadForecast();
+
+        }
+
     }
 }
